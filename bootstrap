@@ -22,7 +22,7 @@ set -eo pipefail
 : "${DOTFIELD_USER_PASSWORD:=}"
 : "${DOTFIELD_SSH_PUBLIC_KEY:=}"
 : "${DOTFIELD_PGP_KEY:=0x135EEDD0F71934F3}"
-: "${DOTFIELD_TIMEZONE:=America/New_York}"
+: "${DOTFIELD_TIMEZONE:=Europe/Zurich}"
 
 : "${USE_HTTPS:=true}"
 
@@ -31,7 +31,7 @@ DOTFIELD_BRANCH="${DOTFIELD_BRANCH#refs/heads/}"
 readonly DOTFIELD_BRANCH
 
 readonly QUERENT="${DOTFIELD_USERNAME:-montchr}"
-readonly REPO_ID="montchr/dotfield"
+readonly REPO_ID="luxus/dotflakes"
 readonly DOTFIELD_RAW_BASE_URL="https://raw.githubusercontent.com/${REPO_ID}/${DOTFIELD_BRANCH}"
 readonly DOTFIELD_UTILS_URL="${DOTFIELD_RAW_BASE_URL}/lib/utils.sh"
 readonly DOTFIELD_LOCK_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}/dotfield/dotfield.lock"
