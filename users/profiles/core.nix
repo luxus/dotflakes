@@ -24,7 +24,6 @@
     procs # A modern replacement for ps.
 
     ## === Utilities ===
-    btop
     bat # A cat(1) clone with wings.
     tealdeer # A very fast implementation of tldr in Rust.
     grex # Generate regexps from user-provided test cases.

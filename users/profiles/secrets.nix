@@ -11,8 +11,8 @@ in
   lib.mkMerge [
     {
       home.packages = with pkgs; [
-        yubikey-manager
-        yubikey-personalization
+        # yubikey-manager
+        # yubikey-personalization
       ];
 
       home.sessionVariables.AGENIX_ROOT = dotflakesPath;

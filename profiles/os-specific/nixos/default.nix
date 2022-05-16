@@ -23,6 +23,8 @@
     iputils
     usbutils
     utillinux
+#not working under darwin
+    btop
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";

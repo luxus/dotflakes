@@ -17,7 +17,7 @@ in {
         b612
         barlow
         ibm-plex
-         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Iosevka"]; })
         inter
         jost
         public-sans

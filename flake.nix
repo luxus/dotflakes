@@ -243,14 +243,12 @@
               basic
               ++ [
                 fonts.common
-                fonts.pragmatapro
                 os-specific.darwin.gui
                 os-specific.darwin.system-defaults
               ];
             typical =
               graphical
               ++ [
-                # os-specific.darwin.emacs
                 secrets
               ];
           };
@@ -281,6 +279,7 @@
             dev = [
               # emacs
               languages.nodejs
+              # languages.python
               vim
             ];
             graphical = [
