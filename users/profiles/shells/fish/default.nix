@@ -16,10 +16,10 @@ in {
   imports = [../common.nix];
 
   home.packages = with pkgs; [
-    fishPlugins.done
-    fishPlugins.forgit
-    fishPlugins.fzf-fish
-    fishPlugins.pisces
+    # fishPlugins.done
+    # fishPlugins.forgit
+    # fishPlugins.fzf-fish
+    # fishPlugins.pisces
   ];
   programs.starship.enableFishIntegration = true;
   programs.fish = {

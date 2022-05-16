@@ -84,11 +84,11 @@ in
     ## === Essentials ===
 
     bashInteractive
-    binutils
+    #binutils
     cacert
-    coreutils
+    #coreutils
     curl
-    dnsutils
+    #dnsutils
     exa
     broot
     fd
@@ -102,7 +102,7 @@ in
     grc
     jq
     less
-    moreutils
+    #moreutils
     nmap
     openssh
     # python310Packages.pyopenssl

@@ -286,7 +286,7 @@
               colors
               espanso
               keyboard
-              kitty
+              # kitty
             ];
             personal = [
               gnupg
