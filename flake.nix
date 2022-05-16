@@ -279,6 +279,7 @@
             dev = [
               # emacs
               languages.nodejs
+              # languages.python
               vim
             ];
             graphical = [

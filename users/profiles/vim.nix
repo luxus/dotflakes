@@ -16,8 +16,8 @@
 # neovim-unwrapped
 
     ##: LunarVim dependencies {{
-
     #: core
+    lua53Packages.luacheck
     cargo
     fd
     ripgrep

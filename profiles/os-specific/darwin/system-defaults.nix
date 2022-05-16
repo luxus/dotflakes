@@ -37,7 +37,7 @@
     ApplePressAndHoldEnabled = false;
     AppleShowAllExtensions = true;
     AppleShowScrollBars = "Automatic";
-    AppleTemperatureUnit = "Fahrenheit";
+    AppleTemperatureUnit = "Celsius";
     InitialKeyRepeat = 10;
     KeyRepeat = 2;
     NSAutomaticCapitalizationEnabled = false;
