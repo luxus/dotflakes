@@ -1,6 +1,6 @@
 {
   username,
-  hashedPassword ? "$6$yq7jJybfGyx19QqK$mr1dfKu1fChKkYDUZvQnlcKCmAYywIvWZXw3uT9EjQ/Xi85SGqkPDcsrrQ.7WEYM6InqDPqGZrTGfvoFpuONi1",
+  hashedPassword ? "$6$I2LIdqsjBKTilFex$pUn6l2RxxP5LUyXYgbIV26FkNLWw79IB6nxEjSaKHNIQHo5ynbIM0rjT8oOiITdLxrMoR53oKwTIifOK9F1SO0",
 }: {
   config,
   lib,
@@ -25,7 +25,7 @@ lib.mkMerge [
 {
   users.users.${name} =
     {
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
       home =
         if isDarwin
         then "/Users/${name}"

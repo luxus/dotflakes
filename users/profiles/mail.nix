@@ -9,8 +9,9 @@
   gmailAccount = {
     name,
     domain,
-    realName ? "chris montgomery",
-    username ? "chris",
+    #TODO:hardcoded name
+    realName ? "Kai Loehnert",
+    username ? "luxuspur",
     ...
   }: let
     address = "${username}@${domain}";
@@ -19,6 +20,7 @@
 
     userName = address;
     flavor = "gmail.com";
+#TODO:Password?
     passwordCommand = "${pkgs.pass}/bin/pass Email/${domain}/${username}--mbsync";
     maildir.path = name;
 
@@ -97,7 +99,7 @@ in {
         gmailAccount
         {
           name = "personal";
-          domain = "cdom.io";
+          domain = "gmail.com";
         }
         // {
           primary = lib.mkDefault true;
@@ -105,15 +107,15 @@ in {
         };
       work = gmailAccount {
         name = "work";
-        domain = "alley.co";
+        domain = "gmail.com";
       };
     };
   };
 
-  programs.emacs = {
-    extraPackages = epkgs: [
-      pkgs.mu
-    ];
+  # programs.emacs = {
+  #   extraPackages = epkgs: [
+  #     pkgs.mu
+  #   ];
   };
 }
 ## References:

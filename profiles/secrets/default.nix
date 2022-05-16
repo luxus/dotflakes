@@ -19,13 +19,13 @@
     then pkgs.lib.our.dotfield.group
     else "admin";
 
-  mkEspansoMatchesSecret = name: {
-    "espanso/${name}.yml" = {
-      file = "${secretsDir}/espanso/${name}.yml.age";
-      group = dotfieldGroup;
-      path = "${cfg.secretsDir}/espanso/${name}.yml";
-    };
-  };
+  # mkEspansoMatchesSecret = name: {
+  #   "espanso/${name}.yml" = {
+  #     file = "${secretsDir}/espanso/${name}.yml.age";
+  #     group = dotfieldGroup;
+  #     path = "${cfg.secretsDir}/espanso/${name}.yml";
+  #   };
+  # };
 in {
   environment.systemPackages = with pkgs; [
     agenix
@@ -36,7 +36,7 @@ in {
     {
       "wireless.env".file = "${secretsDir}/wireless.env.age";
     }
-    (mkEspansoMatchesSecret "personal")
-    (mkEspansoMatchesSecret "work")
+    # (mkEspansoMatchesSecret "personal")
+    # (mkEspansoMatchesSecret "work")
   ];
 }

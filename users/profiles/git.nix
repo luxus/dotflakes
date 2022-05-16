@@ -30,10 +30,10 @@ in {
     userEmail = email;
     userName = fullName;
 
-    signing = lib.mkIf enableSigning {
-      key = pgpPublicKey;
-      signByDefault = true;
-    };
+    # signing = lib.mkIf enableSigning {
+    #   key = pgpPublicKey;
+    #   signByDefault = true;
+    # };
 
     delta = {
       enable = true;

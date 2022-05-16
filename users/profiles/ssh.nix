@@ -14,11 +14,6 @@ moduleArgs @ {
     includes = ["~/.config/ssh/config.local"];
 
     matchBlocks = {
-      "hierophant" = {
-        host = "100.68.129.15";
-        identitiesOnly = true;
-        identityFile = "~/.ssh/id_ed25519_yubikey.pub";
-      };
 
       "github.com" = {
         user = "git";
@@ -36,11 +31,7 @@ moduleArgs @ {
         forwardX11 = false;
         forwardX11Trusted = false;
         identityFile = [
-          "~/.ssh/id_ed25519_yubikey.pub"
-          # TODO: only use this identity file for aws hosts
-          # moduleArgs.osConfig.age.secrets."aws/aws-cdom-default.pem".path
           "~/.ssh/id_ed25519"
-          "~/.ssh/id_rsa"
         ];
         serverAliveInterval = 300;
         serverAliveCountMax = 2;

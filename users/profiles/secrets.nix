@@ -31,9 +31,4 @@ in
         };
       };
     }
-    # FIXME: no effect?
-    (lib.mkIf (config.programs.password-store.enable && config.programs.firefox.enable) {
-      programs.browserpass.enable = true;
-      programs.browserpass.browsers = ["firefox"];
-    })
   ]

@@ -1,21 +1,22 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}: let
+{ config
+, lib
+, pkgs
+, inputs
+, ...
+}:
+let
   inherit (pkgs.lib.our) dotfieldPath;
-in {
-  imports = [./cachix.nix];
+in
+{
+  imports = [ ./cachix.nix ];
 
   nix = {
     package = pkgs.nix;
     gc.automatic = true;
     # useSandbox = lib.mkDefault true;
     useSandbox = lib.mkDefault (!pkgs.stdenv.hostPlatform.isDarwin);
-    allowedUsers = ["*"];
-    trustedUsers = ["root" "@wheel"];
+    allowedUsers = [ "*" ];
+    trustedUsers = [ "root" "@wheel" ];
     extraOptions = ''
       min-free = 536870912
       keep-outputs = true
@@ -31,10 +32,10 @@ in {
     # }}
   };
 
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Zurich";
 
   environment.variables = {
-    DOTFIELD_DIR = lib.mkDefault "/etc/dotfield";
+    DOTFIELD_DIR = lib.mkDefault "/persist/dotflakes";
 
     # If `$DOTFIELD_HOSTNAME` matches `$HOSTNAME`, then we can assume the
     # system has been successfully provisioned with Nix. Otherwise,
@@ -62,7 +63,7 @@ in {
     ZDOTDIR = "$HOME/.config/zsh";
   };
 
-  fonts.fonts = [pkgs.emacs-all-the-icons-fonts];
+  fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
 
   environment.shells = with pkgs; [
     bashInteractive
@@ -70,7 +71,7 @@ in {
     zsh
   ];
 
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   programs.zsh = {
     enable = true;
@@ -98,6 +99,7 @@ in {
     curl
     dnsutils
     exa
+    broot
     fd
     findutils
     gawk

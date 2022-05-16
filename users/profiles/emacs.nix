@@ -86,9 +86,7 @@ in {
   home.packages = with pkgs; [
     ediff-tool
 
-    ## Doom dependencies
     gnutls
-    # doom requires ripgrep with PCRE2 support. this is handled in an overlay.
     ripgrep
 
     ## Optional dependencies

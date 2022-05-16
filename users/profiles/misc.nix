@@ -12,6 +12,10 @@
     circleci-cli
     hyperfine
     universal-ctags
+    lazygit
+    gitui
+    broot
+    prettyping
 
     ## === Data and Documents ===
 

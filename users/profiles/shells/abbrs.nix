@@ -1,6 +1,12 @@
 {
   t = "tail -f";
 
+  br = "broot";
+  ping = "prettyping";
+  vim = "lvim";
+  vi = "lvim";
+  exa = "ls";
+  nvim = "lvim";
   # Make it easy to copy/paste script commands verbatim
   # "$" = "";
 

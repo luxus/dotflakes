@@ -19,7 +19,6 @@ in
           pkill gpg-agent ; pkill ssh-agent ; pkill pinentry ; eval $(gpg-agent --daemon --enable-ssh-support)
         '')
       ];
-
       services.gpg-agent = {
         enable = true;
         # Note that this depends on our fork of the gpg-agent hm module.
@@ -33,13 +32,6 @@ in
 
       programs.gpg = {
         enable = true;
-
-        scdaemonSettings = {
-          disable-ccid = true;
-          # TODO: is this still necessary? only mention in DrDuh guide is for Windows
-          reader-port = "Yubico Yubi";
-        };
-
         # https://github.com/drduh/config/blob/master/gpg.conf
         # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
         # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html

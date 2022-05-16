@@ -6,11 +6,11 @@
 }: {
   lib.dotfield.userPath = "${config.xdg.configHome}/dotfield";
   lib.dotfield.whoami = rec {
-    firstName = "Chris";
-    lastName = "Montgomery";
+    firstName = "Kai";
+    lastName = "Loehnert";
     fullName = "${firstName} ${lastName}";
-    email = "chris@cdom.io";
-    githubUserName = "montchr";
+    email = "luxuspur@gmail.com";
+    githubUserName = "luxus";
     pgpPublicKey = "0x135EEDD0F71934F3";
   };
 
@@ -24,7 +24,7 @@
     procs # A modern replacement for ps.
 
     ## === Utilities ===
-
+    btop
     bat # A cat(1) clone with wings.
     tealdeer # A very fast implementation of tldr in Rust.
     grex # Generate regexps from user-provided test cases.

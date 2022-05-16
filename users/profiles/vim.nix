@@ -10,8 +10,10 @@
     LUNARVIM_CACHE_DIR = "${config.xdg.cacheHome}/nvim";
   };
 
+  home.sessionPath = ["$HOME/.local/bin" ];
   home.packages = with pkgs; [
-    neovim-unwrapped
+     neovim-nightly
+# neovim-unwrapped
 
     ##: LunarVim dependencies {{
 
@@ -19,6 +21,8 @@
     cargo
     fd
     ripgrep
+    gcc
+    unzip
 
     #: nodejs
     nodePackages.neovim

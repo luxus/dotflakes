@@ -1,5 +1,5 @@
 let
-  inherit (default.inputs.nixos-stable) lib;
+  inherit (default.inputs.nixos-unstable) lib;
 
   default = (import ./lib/compat).defaultNix;
 

@@ -3,11 +3,11 @@
 
   nixConfig.extra-experimental-features = "nix-command flakes";
   nixConfig.extra-substituters = "
-    https://dotfield.cachix.org
+    https://luxus.cachix.org
     https://cachix.org/api/v1/cache/nix-community
   ";
   nixConfig.extra-trusted-public-keys = "
-    dotfield.cachix.org-1:b5H/ucY/9PDARWG9uWA87ZKWUBU+hnfF30amwiXiaNk=
+    luxus.cachix.org-1:eW/nJy5bZow2D3wf59qy7a9mfiZNjshIK/BozwgIlLU=
     nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
   ";
 
@@ -37,7 +37,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixlib.follows = "nixlib";
-    nixos-generators.inputs.nixpkgs.follows = "nixos-stable";
+    nixos-generators.inputs.nixpkgs.follows = "nixos-unstable";
 
     # Deployments.
     deploy.url = "github:serokell/deploy-rs";
@@ -55,13 +55,16 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Development tools.
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
     rnix-lsp.url = "github:nix-community/rnix-lsp";
     phps.url = "github:fossar/nix-phps";
     phps.inputs.utils.follows = "digga/flake-utils-plus/flake-utils";
     phps.inputs.nixpkgs.follows = "nixos-unstable";
 
     # User environments.
+    # TODO:use montchr home-manager
     home-manager.url = "github:montchr/home-manager/trunk";
     home-manager.inputs.nixpkgs.follows = "nixos-unstable";
 
@@ -71,12 +74,7 @@
       url = "github:kdrag0n/base16-kitty";
       flake = false;
     };
-    firefox-lepton = {
-      url = "github:black7375/Firefox-UI-Fix";
-      flake = false;
-    };
-
-    nixpkgs.follows = "nixos-stable";
+    nixpkgs.follows = "nixos-unstable";
   };
 
   outputs = {
@@ -85,7 +83,8 @@
     darwin,
     deploy,
     digga,
-    emacs-overlay,
+    # emacs-overlay,
+    neovim-nightly-overlay,
     gitignore,
     home-manager,
     nixlib,
@@ -142,7 +141,8 @@
         })
 
         agenix.overlay
-        emacs-overlay.overlay
+        # emacs-overlay.overlay
+        neovim-nightly-overlay.overlay
         gitignore.overlay
         nur.overlay
         nvfetcher.overlay
@@ -153,7 +153,7 @@
       nixos = {
         hostDefaults = {
           system = "x86_64-linux";
-          channelName = "nixos-stable";
+          channelName = "nixos-unstable";
           imports = [(digga.lib.importExportableModules ./modules)];
           modules = [
             {lib.our = self.lib;}
@@ -192,9 +192,9 @@
             graphical =
               basic
               ++ [
-                desktops.plasma
+                desktops.gnome
                 fonts.common
-                fonts.pragmatapro
+                # fonts.pragmatapro
               ];
             personal = [
               secrets
@@ -251,7 +251,7 @@
             typical =
               graphical
               ++ [
-                os-specific.darwin.emacs
+                # os-specific.darwin.emacs
                 secrets
               ];
           };
@@ -280,14 +280,13 @@
               tealdeer
             ];
             dev = [
-              emacs
+              # emacs
               languages.nodejs
               vim
             ];
             graphical = [
               colors
               espanso
-              firefox
               keyboard
               kitty
             ];
@@ -301,6 +300,10 @@
         users = {
           nixos = {suites, ...}: {
             imports = with suites; basic;
+          };
+          luxus = {suites, ...}: {
+            imports = with suites;
+              basic ++ dev ++ personal ++ graphical;
           };
           seadoom = {suites, ...}: {
             imports = with suites;

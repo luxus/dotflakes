@@ -21,11 +21,10 @@ in {
     fishPlugins.fzf-fish
     fishPlugins.pisces
   ];
-
+  programs.starship.enableFishIntegration = true;
   programs.fish = {
     inherit shellAbbrs shellAliases;
     # inherit shellAliases;
-
     enable = true;
     plugins = mkPlugins [
       # "nvm"

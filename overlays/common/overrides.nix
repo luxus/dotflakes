@@ -9,8 +9,8 @@ channels: final: prev: {
     direnv
     git-cliff
     navi
-    neovim
-    neovim-unwrapped
+    # neovim
+    # neovim-unwrapped
     nix
     nix-direnv
     rage
