@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  lib.dotfield.userPath = "${config.xdg.configHome}/dotfield";
-  lib.dotfield.whoami = rec {
+  lib.dotflakes.userPath = "${config.xdg.configHome}/dotflakes";
+  lib.dotflakes.whoami = rec {
     firstName = "Kai";
     lastName = "Loehnert";
     fullName = "${firstName} ${lastName}";
@@ -14,7 +14,7 @@
     pgpPublicKey = "0x135EEDD0F71934F3";
   };
 
-  home.sessionVariables.DOTFIELD_DIR = config.lib.dotfield.userPath;
+  home.sessionVariables.DOTFLAKES_DIR = config.lib.dotflakes.userPath;
 
   home.packages = with pkgs; [
     ## === Sysadmin ===

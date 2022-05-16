@@ -1468,9 +1468,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotfield@workspace:.":
+"dotflakes@workspace:.":
   version: 0.0.0-use.local
-  resolution: "dotfield@workspace:."
+  resolution: "dotflakes@workspace:."
   dependencies:
     "@prettier/plugin-php": ^0.17.4
     eslint: ^7.32.0

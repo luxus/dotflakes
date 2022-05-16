@@ -1,5 +1,5 @@
 {
-  description = "Dotfield";
+  description = "dotflakes";
 
   nixConfig.extra-experimental-features = "nix-command flakes";
   nixConfig.extra-substituters = "
@@ -275,7 +275,7 @@
               navi
               ranger
               shells.fish
-              shells.zsh
+              # shells.zsh
               ssh
               tealdeer
             ];

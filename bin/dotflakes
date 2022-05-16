@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 #
-# dotfield
+# dotflakes
 #
 # Nix flake shortcuts.
 #
 # Usage:
-#   dotfield <subcommand> [<args>...]
-#   dotfield build [<flake-output>]
-#   dotfield switch [<flake-output>]
-#   dotfield evolve [<flake-output>]
-#   dotfield repl [<flake-output>]
+#   dotflakes <subcommand> [<args>...]
+#   dotflakes build [<flake-output>]
+#   dotflakes switch [<flake-output>]
+#   dotflakes evolve [<flake-output>]
+#   dotflakes repl [<flake-output>]
 
 set -e
 
-if [[ -z $DOTFIELD_DIR ]]; then
-  echo '$DOTFIELD_DIR not defined! Exiting.'
+if [[ -z $DOTFLAKES_DIR ]]; then
+  echo '$DOTFLAKES_DIR not defined! Exiting.'
   exit 1
 fi
 
 # shellcheck source=../lib/utils.sh
-. "${DOTFIELD_DIR}/lib/utils.sh"
+. "${DOTFLAKES_DIR}/lib/utils.sh"
 
 #========================================
 # Get an absolute path to a system flake output.
@@ -29,11 +29,11 @@ fi
 # Arguments:
 #   Hostname.
 # Globals:
-#   DOTFIELD_DIR
+#   DOTFLAKES_DIR
 #========================================
 function host::flakePath() {
   local hostName=$1
-  printf "%s/#%s" "${DOTFIELD_DIR}" "${hostName}"
+  printf "%s/#%s" "${DOTFLAKES_DIR}" "${hostName}"
 }
 
 #========================================
@@ -51,7 +51,7 @@ function host::flakePath() {
 function host::flakeOutput() {
   local hostName="$1"
   [[ -z "${hostName}" ]] \
-    && msg::error "[dotfield::host::flakeOutput] Host name was not specified."
+    && msg::error "[dotflakes::host::flakeOutput] Host name was not specified."
   local outputBase
   case "${KERNEL_NAME}" in
     linux) outputBase="nixosConfigurations" ;;
@@ -67,11 +67,11 @@ function host::flakeOutput() {
 # Usage:
 #   host::name
 # Globals:
-#   DOTFIELD_HOSTNAME
+#   DOTFLAKES_HOSTNAME
 #   HOSTNAME
 #========================================
 function host::name() {
-  echo "${DOTFIELD_HOSTNAME:-${HOSTNAME:-$(hostname)}}"
+  echo "${DOTFLAKES_HOSTNAME:-${HOSTNAME:-$(hostname)}}"
 }
 
 #========================================
@@ -106,7 +106,7 @@ function host::build() {
 #   Hostname.
 #   Args to pass to the switch command.
 # Globals:
-#   DOTFIELD_DIR
+#   DOTFLAKES_DIR
 #========================================
 function host::switch() {
   local name="$1"
@@ -123,16 +123,16 @@ function host::switch() {
       ;;
     darwin)
       flakePath="$(host::flakePath "${name}")"
-      "${DOTFIELD_DIR}/result/sw/bin/darwin-rebuild" switch \
+      "${DOTFLAKES_DIR}/result/sw/bin/darwin-rebuild" switch \
         --verbose --flake \
         "${flakePath}" \
         "$@"
       ;;
-    *) msg::error "[dotfield::host::switch] Unable to detect kernel name." ;;
+    *) msg::error "[dotflakes::host::switch] Unable to detect kernel name." ;;
   esac
 
   [[ $? ]] || {
-    msg::error "[dotfield::host::switch] Failed to switch to the new generation!"
+    msg::error "[dotflakes::host::switch] Failed to switch to the new generation!"
   }
 
 }
@@ -173,11 +173,11 @@ function theme::is_dark() {
 function theme::switch() {
   local name=$1
   if theme::is_dark "${name}"; then
-    DOTFIELD_THEME="black-metal-khold"
+    DOTFLAKES_THEME="black-metal-khold"
   else
-    DOTFIELD_THEME="grayscale-light"
+    DOTFLAKES_THEME="grayscale-light"
   fi
-  export DOTFIELD_THEME
+  export DOTFLAKES_THEME
   host::switch "$(host::name)" --impure
 }
 
@@ -215,7 +215,7 @@ function main() {
     repl)
       msg::domain "Introspection" "Launching REPL"
       # Use flake-utils-plus REPL shell
-      repl "${DOTFIELD_DIR}"
+      repl "${DOTFLAKES_DIR}"
       ;;
 
     theme)

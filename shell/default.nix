@@ -5,6 +5,6 @@
 }: {
   modules = [];
   exportedModules = [
-    ./dotfield.nix
+    ./dotflakes.nix
   ];
 }

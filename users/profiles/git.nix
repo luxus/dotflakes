@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (lib) getAttr attrNames;
-  inherit (config.lib.dotfield.whoami) email fullName pgpPublicKey;
+  inherit (config.lib.dotflakes.whoami) email fullName pgpPublicKey;
 
   enableSigning =
     config.programs.gpg.enable
@@ -85,9 +85,9 @@ in {
 
     extraConfig = lib.mkMerge [
       {
-        github.user = "montchr";
-        gitlab.user = "montchr";
-        sourcehut.user = "montchr";
+        github.user = "luxus";
+        gitlab.user = "luxus";
+        sourcehut.user = "luxus";
 
         init.defaultBranch = "main";
 
@@ -140,5 +140,5 @@ in {
     ];
   };
 
-  xdg.configFile."git/templates".source = "${pkgs.dotfield-config}/git/templates";
+  xdg.configFile."git/templates".source = "${pkgs.dotflakes-config}/git/templates";
 }

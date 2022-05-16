@@ -16,7 +16,6 @@ channels: final: prev: {
     rage
     tidy-viewer
     treefmt
-    zsh-prezto
     ;
 
   ripgrep = prev.ripgrep.override {withPCRE2 = true;};

@@ -10,7 +10,7 @@
   cfg = config.services.yabai;
   # barCfg = config.services.sketchybar;
 
-  configDir = "${pkgs.dotfield-config}/yabai";
+  configDir = "${pkgs.dotflakes-config}/yabai";
   daemonPath = "/Library/LaunchDaemons/org.nixos.yabai-sa.plist";
 
   defaults = {

@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  inherit (config.lib.dotfield.whoami) pgpPublicKey;
+  inherit (config.lib.dotflakes.whoami) pgpPublicKey;
 
-  dotfieldPath = "${config.xdg.configHome}/dotfield";
+  dotflakesPath = "${config.xdg.configHome}/dotflakes";
 in
   lib.mkMerge [
     {
@@ -15,7 +15,7 @@ in
         yubikey-personalization
       ];
 
-      home.sessionVariables.AGENIX_ROOT = dotfieldPath;
+      home.sessionVariables.AGENIX_ROOT = dotflakesPath;
 
       programs.password-store = lib.mkIf config.programs.gpg.enable {
         enable = true;

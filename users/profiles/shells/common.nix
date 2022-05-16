@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  inherit (lib.dotfield.whoami) githubUserName;
+  inherit (lib.dotflakes.whoami) githubUserName;
 
   envInit = import ./env-init.sh.nix;
 

@@ -17,7 +17,7 @@
   ...
 }: {
   xdg.configFile."espanso" = {
-    source = "${pkgs.dotfield-config}/espanso";
+    source = "${pkgs.dotflakes-config}/espanso";
     recursive = true;
   };
 }

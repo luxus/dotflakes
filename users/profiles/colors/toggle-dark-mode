@@ -8,8 +8,8 @@
 # - base16-fzf
 # - emacs
 
-[[ -z $DOTFIELD_DIR ]] && {
-  echo 'DOTFIELD_DIR not defined!' 1>&2
+[[ -z $DOTFLAKES_DIR ]] && {
+  echo 'DOTFLAKES_DIR not defined!' 1>&2
   return 1
 }
 
@@ -18,7 +18,7 @@
 # . "${XDG_CONFIG_HOME}/bash/env"
 
 # shellcheck source=../../../lib/utils.sh
-. "${DOTFIELD_DIR}/lib/utils.sh"
+. "${DOTFLAKES_DIR}/lib/utils.sh"
 
 
 function kitty::theme_change() {
@@ -44,8 +44,8 @@ function main() {
     exit 1
   }
 
-  appearance="$(dotfield_os_appearance)"
-  theme="$(dotfield_base16_theme "${appearance}")"
+  appearance="$(DOTFLAKES_os_appearance)"
+  theme="$(DOTFLAKES_base16_theme "${appearance}")"
 
   printf "\n=========\n"
   printf "Appearance:\t%s\n" "${appearance}"

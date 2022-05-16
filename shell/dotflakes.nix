@@ -26,7 +26,7 @@
   withCategory = category: attrset: attrset // {inherit category;};
   pkgWithCategory = category: package: {inherit package category;};
 
-  dotfield = pkgWithCategory "dotfield";
+  dotflakes = pkgWithCategory "dotflakes";
   linter = pkgWithCategory "linters";
   formatter = pkgWithCategory "formatters";
   utils = withCategory "utils";
@@ -35,14 +35,14 @@ in {
 
   commands =
     [
-      (dotfield nixUnstable)
-      (dotfield agenix)
-      # (dotfield inputs.deploy.packages.${pkgs.system}.deploy-rs)
-      (dotfield terraform)
-      (dotfield treefmt)
+      (dotflakes nixUnstable)
+      (dotflakes agenix)
+      # (dotflakes inputs.deploy.packages.${pkgs.system}.deploy-rs)
+      (dotflakes terraform)
+      (dotflakes treefmt)
 
       {
-        category = "dotfield";
+        category = "dotflakes";
         name = nvfetcher-bin.pname;
         help = nvfetcher-bin.meta.description;
         command = "cd $PRJ_ROOT/pkgs; ${nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
@@ -62,7 +62,7 @@ in {
       (linter shellcheck)
     ]
     ++ lib.optional (!pkgs.stdenv.buildPlatform.isi686)
-    (dotfield cachix)
+    (dotflakes cachix)
     ++ lib.optional (pkgs.stdenv.hostPlatform.isLinux && !pkgs.stdenv.buildPlatform.isDarwin)
-    (dotfield inputs.nixos-generators.defaultPackage.${pkgs.system});
+    (dotflakes inputs.nixos-generators.defaultPackage.${pkgs.system});
 }

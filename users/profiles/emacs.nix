@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (pkgs.lib.our) dotfieldPath;
+  inherit (pkgs.lib.our) dotflakesPath;
   inherit
     (config.xdg)
     configHome
@@ -12,7 +12,7 @@
     stateHome
     ;
 
-  dotfieldConfigPath = "${configHome}/dotfield/config";
+  dotflakesConfigPath = "${configHome}/dotflakes/config";
   chemacsDir = "${configHome}/emacs";
   chemacsProfile = "doom";
 
@@ -20,7 +20,7 @@
   vanillaProfilePath = "emacs/profiles/vanilla";
   xtallosProfilePath = "emacs/profiles/xtallos";
 
-  doomDir = "${dotfieldConfigPath}/${doomProfilePath}";
+  doomDir = "${dotflakesConfigPath}/${doomProfilePath}";
   doomDataDir = "${dataHome}/${doomProfilePath}";
   doomStateDir = "${stateHome}/${doomProfilePath}";
 in {
@@ -65,8 +65,8 @@ in {
                           ("DOOMLOCALDIR" . "${doomStateDir}")
                           ("EMACSDIR" . "${doomDataDir}")))
                   (server-name . "doom")))
-       ("vanilla" . ((user-emacs-directory . "${dotfieldConfigPath}/${vanillaProfilePath}")))
-       ("xtallos" . ((user-emacs-directory . "${dotfieldConfigPath}/${xtallosProfilePath}"))))
+       ("vanilla" . ((user-emacs-directory . "${dotflakesConfigPath}/${vanillaProfilePath}")))
+       ("xtallos" . ((user-emacs-directory . "${dotflakesConfigPath}/${xtallosProfilePath}"))))
     '';
 
     ## chemacs default profile

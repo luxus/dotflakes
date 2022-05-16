@@ -1199,7 +1199,7 @@ function repo::is_repo {
 
 # Qualify a repo URL.
 # Parameters:
-#   Repo identifier (e.g. montchr/dotfield) or URL.
+#   Repo identifier (e.g. luxus/dotflakes) or URL.
 #   Forge name or shortname (e.g. github or gh).
 function repo::qualify_url {
   local identifier=$1
@@ -1298,12 +1298,12 @@ function repo::pluck {
 #
 # Usage:
 #   repo::sync <target> <forge-id> <repo-id> [<branch>]
-#   repo::sync ~/dotfield gh montchr/dotfield
-#   repo::sync ~/dotfield gh montchr/dotfield hotfix/foo
+#   repo::sync ~/dotflakes gh luxus/dotflakes
+#   repo::sync ~/dotflakes gh luxus/dotflakes hotfix/foo
 # Parameters:
 #   Target directory
 #   Forge ID -- e.g. gh or github
-#   Repo ID -- e.g. montchr/dotfield
+#   Repo ID -- e.g. luxus/dotflakes
 #   Branch name -- defaults to `main`
 #========================================
 function repo::sync {

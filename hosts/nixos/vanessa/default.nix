@@ -42,7 +42,7 @@ in {
   };
   security.sudo.wheelNeedsPassword = false;
 
-  environment.variables.DOTFIELD_DIR = "/persist/dotflakes";
+  environment.variables.DOTFLAKES_DIR = "/persist/dotflakes";
 
   users.mutableUsers = false;
 

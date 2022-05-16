@@ -3,10 +3,10 @@ final: prev: {
   sources = prev.callPackage (import ./_sources/generated.nix) {};
   # then, call packages with `final.callPackage`
 
-  ## dotfield internals ========================================================
+  ## dotflakes internals ========================================================
 
-  dotfield-config = prev.stdenv.mkDerivation {
-    name = "dotfield-config";
+  dotflakes-config = prev.stdenv.mkDerivation {
+    name = "dotflakes-config";
     src = final.gitignoreSource ../config;
     installPhase = ''
       mkdir -p $out
@@ -14,9 +14,9 @@ final: prev: {
     '';
   };
 
-  # dotfield-php = prev.stdenv.mkDerivation {
-  #   name = "dotfield-php";
-  #   src = ./dotfield-php/vendor/bin;
+  # dotflakes-php = prev.stdenv.mkDerivation {
+  #   name = "dotflakes-php";
+  #   src = ./dotflakes-php/vendor/bin;
   #   installPhase = ''
   #     mkdir -p $out
   #     cp -L * $out/bin

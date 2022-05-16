@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  inherit (pkgs.lib.our) dotfieldPath;
+  inherit (pkgs.lib.our) dotflakesPath;
 in
 {
   imports = [ ./cachix.nix ];
@@ -35,12 +35,12 @@ in
   time.timeZone = "Europe/Zurich";
 
   environment.variables = {
-    DOTFIELD_DIR = lib.mkDefault "/persist/dotflakes";
+    DOTFLAKES_DIR = lib.mkDefault "/persist/dotflakes";
 
-    # If `$DOTFIELD_HOSTNAME` matches `$HOSTNAME`, then we can assume the
+    # If `$DOTFLAKES_HOSTNAME` matches `$HOSTNAME`, then we can assume the
     # system has been successfully provisioned with Nix. Otherwise,
-    # `$DOTFIELD_HOSTNAME` should remain an empty string.
-    DOTFIELD_HOSTNAME = config.networking.hostName;
+    # `$DOTFLAKES_HOSTNAME` should remain an empty string.
+    DOTFLAKES_HOSTNAME = config.networking.hostName;
 
     # TODO: should this really be a system environment variable?
     # CACHEDIR = "$HOME/.cache";
@@ -60,23 +60,14 @@ in
     # TODO: is this correct for linux?
     # XDG_RUNTIME_DIR = "/tmp";
     XDG_STATE_HOME = "$HOME/.local/state";
-    ZDOTDIR = "$HOME/.config/zsh";
   };
 
-  fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
+  # fonts.fonts = [ ];
 
   environment.shells = with pkgs; [
     bashInteractive
     fish
-    zsh
   ];
-
-  environment.pathsToLink = [ "/share/zsh" ];
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-  };
 
   programs.fish.enable = true;
 
@@ -87,8 +78,8 @@ in
 
   environment.systemPackages = with pkgs; [
     # TODO: add this via gitignore.nix or something to avoid IFD
-    (writeScriptBin "dotfield"
-      (builtins.readFile "${dotfieldPath}/bin/dotfield"))
+    (writeScriptBin "dotflakes"
+      (builtins.readFile "${dotflakesPath}/bin/dotflakes"))
 
     ## === Essentials ===
 

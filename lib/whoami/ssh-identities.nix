@@ -1,5 +1,3 @@
-# https://meta.sr.ht/~montchr.keys -- exposes comments, thank you!
-# https://github.com/montchr.keys  -- tough to match with fingerprints
 [
   ## machines
 

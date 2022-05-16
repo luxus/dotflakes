@@ -44,7 +44,7 @@ lib.mkMerge [
   (lib.mkIf (!isDarwin) {
     users.users.${name} = {
       extraGroups = [
-        pkgs.lib.our.dotfield.group
+        pkgs.lib.our.dotflakes.group
         "wheel"
       ];
       hashedPassword = lib.mkDefault hashedPassword;

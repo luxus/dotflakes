@@ -4,12 +4,12 @@
   pkgs,
   ...
 }: let
-  inherit (config.lib.dotfield.whoami) pgpPublicKey;
+  inherit (config.lib.dotflakes.whoami) pgpPublicKey;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in
   lib.mkIf ("" != pgpPublicKey) (lib.mkMerge [
     {
-      home.sessionVariables.DOTFIELD_PGP_KEY = pgpPublicKey;
+      home.sessionVariables.DOTFLAKES_PGP_KEY = pgpPublicKey;
 
       home.packages = with pkgs; [
         gnupg

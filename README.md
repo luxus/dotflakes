@@ -1,8 +1,8 @@
-# montchr/dotfield
+# luxus/dotflakes
 
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-This is Dotfield, my worlds and systems, a nutrient-rich typo terraforming
+This is dotflakes, my worlds and systems, a nutrient-rich typo terraforming
 the hungry heads of a talking planet.
 
 Primarily for macOS right now, but gradually introducing NixOS
@@ -10,11 +10,11 @@ configurations as well.
 
 ## Identities
 
-### SSH @ <https://meta.sr.ht/~montchr.keys>
+### SSH @ <https://meta.sr.ht/~luxus.keys>
 
 Copy entries as needed from [`secrets/authorized-keys.nix`](./secrets/secrets.nix)
 
-### GPG/PGP @ <https://meta.sr.ht/~montchr.pgp>
+### GPG/PGP @ <https://meta.sr.ht/~luxus.pgp>
 
 From https://github.com/drduh/YubiKey-Guide#using-keys:
 
@@ -29,7 +29,7 @@ gpg --edit-key $KEYID
 ### Hetzner Cloud
 
 ```sh
-curl -L https://raw.githubusercontent.com/montchr/dotfield/main/provision/bin/nixos-install-hetzner-cloud.sh | sudo bash
+curl -L https://raw.githubusercontent.com/luxus/dotflakes/main/provision/bin/nixos-install-hetzner-cloud.sh | sudo bash
 ```
 
 Adapted from the script provided by https://github.com/nix-community/nixos-install-scripts.
