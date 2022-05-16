@@ -64,7 +64,7 @@
   homebrew = {
     casks = ["microsoft-teams" "sketch"];
     masApps = {
-      "Xcode" = 497799835;
+      # "Xcode" = 497799835;
     };
   };
 }

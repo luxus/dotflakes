@@ -29,9 +29,9 @@
     tree-sitter
 
     #: python
-     (python310.withPackages (ps: [ ps.setuptools ps.isort ]))
-     black
-     poetry
+     # (python311.withPackages (ps: [ ps.setuptools ps.isort ]))
+     # black
+     # poetry
 
     #: }}
   ];
