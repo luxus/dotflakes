@@ -9,9 +9,9 @@
 }: let
   secretsDir = ../../../secrets;
 in {
-  imports = with suites;
-    graphical
-    ++ personal
+  imports =
+    suites.graphical
+    ++ suites.personal
     ++ (with profiles; [
       audio
       users.luxus
@@ -32,26 +32,14 @@ in {
     openssh.authorizedKeys.keys = import "${secretsDir}/authorized-keys.nix";
   };
 
-  home-manager.users.luxus = {
-    profiles,
-    suites,
+  home-manager.users.luxus = hmArgs@{
     ...
   }: {
     imports =
       [hmUsers.luxus]
-      ++ (with suites; graphical)
-      ++ (with profiles; []);
+      ++ hmArgs.suites.graphical
+      ++ (with hmArgs.profiles; []);
   };
-
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.version = 2;
-  # boot.loader.grub.device = "/dev/sda";
-  # boot.initrd.checkJournalingFS = false;
-
-  # networking.useDHCP = false;
-  # networking.interfaces.enp0s5.useDHCP = true;
-  # networking.firewall.enable = false;
-
   security.sudo.wheelNeedsPassword = false;
 
   environment.variables.DOTFIELD_DIR = "/persist/dotflakes";
