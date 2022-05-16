@@ -167,8 +167,7 @@
 
         imports = [(digga.lib.importHosts ./hosts/nixos)];
         hosts = {
-          HodgePodge = {};
-          onceler = {};
+          vanessa = {};
           ci-ubuntu = {};
         };
 
@@ -224,7 +223,7 @@
 
         imports = [(digga.lib.importHosts ./hosts/darwin)];
         hosts = {
-          alleymon = {};
+          emily = {};
           macOS = {};
           ci-darwin = {};
         };
@@ -304,14 +303,6 @@
           luxus = {suites, ...}: {
             imports = with suites;
               basic ++ dev ++ personal ++ graphical;
-          };
-          seadoom = {suites, ...}: {
-            imports = with suites;
-              basic ++ dev ++ personal;
-          };
-          xtallos = {suites, ...}: {
-            imports = with suites;
-              basic ++ dev ++ personal;
           };
         };
       };

@@ -20,7 +20,6 @@ in {
     ++ [./hardware-configuration.nix];
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    grub.useOSProber = true;
     systemd-boot = {
       enable = true;
       configurationLimit = 15;
