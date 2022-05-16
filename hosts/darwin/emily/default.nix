@@ -24,7 +24,6 @@
       [hmUsers.luxus]
       ++ (with suites; graphical)
       ++ (with profiles; [
-        aws
         # languages.php
         # languages.ruby
         ##TODO:editing email stuff to make it work

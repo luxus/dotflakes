@@ -5,7 +5,7 @@ channels: final: prev: {
     (channels.nixos-unstable)
     alejandra
     atuin
-    awscli2
+    # awscli2
     direnv
     git-cliff
     navi
