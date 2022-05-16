@@ -29,7 +29,7 @@
     tree-sitter
 
     #: python
-     (python311.withPackages (ps: [ ps.setuptools ps.isort ]))
+     (python310.withPackages (ps: [ ps.setuptools ps.isort ]))
      black
      poetry
 

@@ -105,6 +105,8 @@ in
     moreutils
     nmap
     openssh
+    # python310Packages.pyopenssl
+    # python310Packages.pandas
     openssl
     ripgrep
     rsync
