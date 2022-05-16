@@ -1,3 +1,0 @@
-[submodule "pfetch"]
-	path = vendor/pfetch
-	url = https://github.com/montchr/pfetch.git
