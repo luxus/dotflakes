@@ -29,7 +29,9 @@
     tree-sitter
 
     #: python
-    python39Packages.pynvim
+     (python311.withPackages (ps: [ ps.setuptools ps.isort ]))
+     black
+     poetry
 
     #: }}
   ];
