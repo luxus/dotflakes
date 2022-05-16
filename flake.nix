@@ -208,7 +208,7 @@
 
       darwin = {
         hostDefaults = {
-          system = "x86_64-darwin";
+          system = "aarch64-darwin";
           channelName = "nixpkgs-darwin-stable";
           imports = [(digga.lib.importExportableModules ./modules)];
           modules = [
