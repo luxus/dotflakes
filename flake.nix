@@ -176,27 +176,26 @@
             digga.lib.rakeLeaves ./profiles
             // {users = digga.lib.rakeLeaves ./users;};
 
-          suites = with profiles; rec {
+          suites = with profiles; {
             basic = [
               boot
               core
-              nixos-core
+              core.nixos
               networking.common
             ];
             minimal =
-              basic
+              suites.basic
               ++ [
                 users.nixos
                 users.root
               ];
             graphical =
-              basic
+              suites.basic
               ++ [
-                desktops.common
+                desktops
                 desktops.gnome
-                fonts.common
+                fonts
                 desktops.sound
-                # fonts.pragmatapro
               ];
             personal = [
               secrets
@@ -232,21 +231,21 @@
             digga.lib.rakeLeaves ./profiles
             // {users = digga.lib.rakeLeaves ./users;};
 
-          suites = with profiles; rec {
+          suites = with profiles;  {
             basic = [
               core
-              os-specific.darwin.common
+              core.darwin
               networking.common
             ];
             graphical =
-              basic
+              suites.basic
               ++ [
-                fonts.common
-                os-specific.darwin.gui
-                os-specific.darwin.system-defaults
+                fonts
+                darwin.gui
+                darwin.system-defaults
               ];
             typical =
-              graphical
+              suites.graphical
               ++ [
                 secrets
               ];

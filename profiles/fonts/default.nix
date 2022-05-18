@@ -7,11 +7,11 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux isMacOS;
 in {
   environment.systemPackages = with pkgs; [
-    (lib.mkIf isLinux font-manager)
+    # (lib.mkIf isLinux font-manager)
   ];
 
   fonts = {
-    fontDir.enable = true;
+    # fontDir.enable = true;
     fonts = with pkgs;
       [
         b612

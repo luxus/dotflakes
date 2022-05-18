@@ -65,7 +65,7 @@ in
   # fonts.fonts = [ ];
 
   environment.shells = with pkgs; [
-    bashInteractive
+    bash
     fish
   ];
 
@@ -83,12 +83,11 @@ in
 
     ## === Essentials ===
 
-    bashInteractive
-    #binutils
+    binutils
     cacert
-    #coreutils
+    coreutils
     curl
-    #dnsutils
+    dnsutils
     exa
     broot
     fd
@@ -102,22 +101,17 @@ in
     grc
     jq
     less
-    #moreutils
+    moreutils
     nmap
     openssh
-    # python310Packages.pyopenssl
-    # python310Packages.pandas
     openssl
     ripgrep
     rsync
     tmux
-    vim
     wget
     whois
 
     ## === Nix Helpers ===
-
-    alejandra # The Uncompromising Nix Code Formatter
     cachix
     fup-repl
     manix # nix documentation search
