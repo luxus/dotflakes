@@ -13,7 +13,6 @@ in {
     suites.graphical
     ++ suites.personal
     ++ (with profiles; [
-      audio
       users.luxus
      # virtualisation.guests.parallels
     ])

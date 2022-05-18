@@ -28,10 +28,15 @@
     nodePackages.neovim
     tree-sitter
 
+#nix
+    statix
+    deadnix
+    alejandra
     #: python
-     # (python311.withPackages (ps: [ ps.setuptools ps.isort ]))
-     # black
-     # poetry
+     (python311.withPackages (ps: [ ps.setuptools  ]))
+     # black ps.isort
+      poetry
+      pyright
 
     #: }}
   ];

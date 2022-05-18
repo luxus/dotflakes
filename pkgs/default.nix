@@ -43,7 +43,4 @@ final: prev: {
     '';
   };
 
-  ## fonts =====================================================================
-
-  sf-pro = final.callPackage ./fonts/sf-pro.nix {};
 }

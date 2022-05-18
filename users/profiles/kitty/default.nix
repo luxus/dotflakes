@@ -78,7 +78,7 @@ in
             "+ss13" # Smooth graphs e.g. for git log.
           ];
         in ''
-          ${mkFontFeatures' "PragmataProMonoLiga" fontStyles fontFeatures}
+          ${mkFontFeatures' "in" fontStyles fontFeatures}
         '';
 
         settings =

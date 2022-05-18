@@ -178,9 +178,10 @@
 
           suites = with profiles; rec {
             basic = [
+              boot
               core
+              nixos-core
               networking.common
-              os-specific.nixos
             ];
             minimal =
               basic
@@ -191,16 +192,14 @@
             graphical =
               basic
               ++ [
+                desktops.common
                 desktops.gnome
                 fonts.common
+                desktops.sound
                 # fonts.pragmatapro
               ];
             personal = [
               secrets
-            ];
-            tangible = [
-              audio
-              networking.wifi
             ];
           };
         };
@@ -286,7 +285,8 @@
               colors
               espanso
               keyboard
-              # kitty
+              kitty
+              foot
             ];
             personal = [
               gnupg

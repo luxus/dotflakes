@@ -6,7 +6,7 @@
 
       # Necessary for home-manager to work with flakes, otherwise it will
       # look for a nixpkgs channel.
-      home.stateVersion = "21.11";
+      home.stateVersion = "22.05";
 
       xdg.enable = true;
 
