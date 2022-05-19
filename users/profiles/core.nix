@@ -24,15 +24,13 @@
     procs # A modern replacement for ps.
 
     ## === Utilities ===
-    bat # A cat(1) clone with wings.
     tealdeer # A very fast implementation of tldr in Rust.
     grex # Generate regexps from user-provided test cases.
     httpie # Modern, user-friendly command-line HTTP client for the API era.
 
-    ## === Formatters ===
-
-    treefmt # One CLI to format the code tree
   ];
+  programs.zellij.enable = true;
+  programs.dunst.enabled = true;
 
   programs.bat = {
     enable = true;

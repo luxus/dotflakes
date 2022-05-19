@@ -28,6 +28,9 @@
     nodePackages.neovim
     tree-sitter
 
+    ## === Formatters ===
+
+    treefmt # One CLI to format the code tree
 #nix
     statix
     deadnix

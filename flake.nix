@@ -268,7 +268,7 @@
               git
               misc
               navi
-              ranger
+              # ranger
               shells.fish
               # shells.zsh
               ssh

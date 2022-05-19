@@ -50,7 +50,9 @@ in {
   # across various tools. See the home-manager manual for more info.
   programs.man.generateCaches = lib.mkDefault true;
 
-  programs.zoxide.enable = true;
+  programs.pazi.enable = true;
+  programs.watson.enable = true;
+  programs.lf.enable = true;
 
   home.sessionVariables = {
     INPUTRC = "$XDG_CONFIG_HOME/readline/inputrc";
@@ -59,15 +61,7 @@ in {
     # between the icon and its filename.
     EXA_ICON_SPACING = "2";
 
-    Z_DATA = "$XDG_DATA_HOME/z";
-    Z_OWNER = config.home.username;
-
     LESSHISTFILE = "$XDG_STATE_HOME/lesshst";
-
-    # Docker
-    DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
-    MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker-machine";
-
     # Go
     GOPATH = "$XDG_DATA_HOME/go";
 
@@ -75,11 +69,5 @@ in {
     CARGO_HOME = "$XDG_DATA_HOME/cargo";
     RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
 
-    # GNU screen
-    SCREENRC = "$XDG_CONFIG_HOME/screen/screenrc";
-
-    # wd
-    # https://github.com/mfaerevaag/wd
-    WD_CONFIG = "$XDG_CONFIG_HOME/wd/warprc";
   };
 }

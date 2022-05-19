@@ -8,7 +8,7 @@ in {
   options.modules.programs.foot = {
     enable = mkEnableOption "Enable Foot, the lightweight terminal emulator for Wayland";
   };
-
+#TODO:not working because of just a copy paste from a diffrent config
   config = mkIf cfg.enable {
 
   programs.foot = {

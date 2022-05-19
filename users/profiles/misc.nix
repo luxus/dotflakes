@@ -16,6 +16,7 @@
     gitui
     broot
     prettyping
+    difftastic
 
     ## === Data and Documents ===
 
