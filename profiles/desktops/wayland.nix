@@ -14,6 +14,7 @@
     # Grab images from a Wayland compositor
     # https://sr.ht/~emersion/grim/
     grim
+    foot
 
     # Select a region in a Wayland compositor and print it to the standard output.
     # A complement to grim

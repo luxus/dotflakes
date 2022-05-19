@@ -8,6 +8,7 @@ environment.systemPackages = with pkgs; [
   brave
   gitkraken
   _1password-gui
+  foot
   fractal
 ];
 }

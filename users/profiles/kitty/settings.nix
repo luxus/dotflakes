@@ -1,5 +1,5 @@
 {...}: {
-  font_family = "iva nerd font mono";
+  font_family = "Iosevka Nerd Font Mono";
   font_size = "14.0";
   # adjust_line_height = "110%";
   disable_ligatures = "cursor";

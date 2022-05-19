@@ -179,7 +179,7 @@
           suites = with profiles; {
             basic = [
               boot
-              core
+              core.common
               core.nixos
               networking.common
             ];
@@ -192,9 +192,9 @@
             graphical =
               suites.basic
               ++ [
-                desktops
+                desktops.common
                 desktops.gnome
-                fonts
+                fonts.common
                 desktops.sound
               ];
             personal = [
@@ -233,14 +233,14 @@
 
           suites = with profiles;  {
             basic = [
-              core
+              core.common
               core.darwin
               networking.common
             ];
             graphical =
               suites.basic
               ++ [
-                fonts
+                fonts.common
                 darwin.gui
                 darwin.system-defaults
               ];
