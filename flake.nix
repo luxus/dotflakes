@@ -241,7 +241,7 @@
               suites.basic
               ++ [
                 fonts.common
-                core.darwin.gui
+                core.darwin-only
                 core.darwin.system-defaults
               ];
             typical =
