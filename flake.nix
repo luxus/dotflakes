@@ -257,26 +257,22 @@
         imports = [(digga.lib.importExportableModules ./users/modules)];
         modules = [
           nix-colors.homeManagerModule
-          ({suites, ...}: {imports = suites.core;})
+          ({suites, ...}: {imports = suites.basic;})
         ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./users/profiles;
           suites = with profiles; rec {
-            core = [
+            basic = [
               core
               direnv
               git
               misc
               navi
-              # ranger
               shells.fish
-              # shells.zsh
               ssh
               tealdeer
             ];
             dev = [
-              # emacs
-              languages.nodejs
               # languages.python
               vim
             ];
@@ -300,7 +296,7 @@
           };
           luxus = {suites, ...}: {
             imports = with suites;
-              core ++ dev ++ personal ++ graphical;
+              basic ++ dev ++ personal ++ graphical;
           };
         };
       };
