@@ -157,7 +157,7 @@
           imports = [(digga.lib.importExportableModules ./modules)];
           modules = [
             {lib.our = self.lib;}
-            ({suites, ...}: {imports = suites.basic;})
+            ({suites, ...}: {imports = suites.core;})
             digga.nixosModules.bootstrapIso
             digga.nixosModules.nixConfig
             home-manager.nixosModules.home-manager
@@ -177,24 +177,24 @@
             // {users = digga.lib.rakeLeaves ./users;};
 
           suites = with profiles; {
-            basic = [
+            core = [
               boot
               core.common
               core.nixos
               networking.common
             ];
             minimal =
-              suites.basic
+              suites.core
               ++ [
                 users.nixos
                 users.root
               ];
             graphical =
-              suites.basic
+              suites.core
               ++ [
                 desktops.common
                 desktops.gnome
-                fonts.common
+                desktops.fonts
                 desktops.sound
               ];
             personal = [
@@ -211,7 +211,7 @@
           imports = [(digga.lib.importExportableModules ./modules)];
           modules = [
             {lib.our = self.lib;}
-            ({suites, ...}: {imports = suites.basic;})
+            ({suites, ...}: {imports = suites.core;})
             home-manager.darwinModules.home-manager
             # `nixosModules` is correct, even for darwin
             agenix.nixosModules.age
@@ -232,20 +232,20 @@
             // {users = digga.lib.rakeLeaves ./users;};
 
           suites = with profiles;  {
-            basic = [
+            core = [
               core.common
               core.darwin
               networking.common
             ];
             graphical =
-              suites.basic
+              suites.core
               ++ [
-                fonts.common
+                desktops.fonts
                 darwin.gui
                 darwin.system-defaults
               ];
             typical =
-              suites.graphical
+              suites.desktops
               ++ [
                 secrets
               ];
@@ -257,12 +257,12 @@
         imports = [(digga.lib.importExportableModules ./users/modules)];
         modules = [
           nix-colors.homeManagerModule
-          ({suites, ...}: {imports = suites.basic;})
+          ({suites, ...}: {imports = suites.core;})
         ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./users/profiles;
           suites = with profiles; rec {
-            basic = [
+            core = [
               core
               direnv
               git
@@ -296,11 +296,11 @@
 
         users = {
           nixos = {suites, ...}: {
-            imports = with suites; basic;
+            imports = with suites; core;
           };
           luxus = {suites, ...}: {
             imports = with suites;
-              basic ++ dev ++ personal ++ graphical;
+              core ++ dev ++ personal ++ graphical;
           };
         };
       };
