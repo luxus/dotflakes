@@ -34,7 +34,7 @@
   environment.systemPackages = with pkgs.gnomeExtensions; [
    tiling-assistant
    pop-shell
-    gsconnect
+   gsconnect
   ];
 
   # xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];

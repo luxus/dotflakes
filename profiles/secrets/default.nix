@@ -35,6 +35,7 @@ in {
   age.secrets = lib.mkMerge [
     {
       "wireless.env".file = "${secretsDir}/wireless.env.age";
+      "passwords.env".file = "${secretsDir}/passwords.env.age";
     }
     # (mkEspansoMatchesSecret "personal")
     # (mkEspansoMatchesSecret "work")

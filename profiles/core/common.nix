@@ -108,6 +108,22 @@ in
     tmux
     wget
     whois
+## cool rust tui
+    diskonaut
+    freshfetch
+    tickrs
+    bandwhich
+    spotify-tui
+    gpg-tui
+    zenith #glances?
+    taskwarrior-tui
+    bottom
+    # hoard # stash for commands that are very long
+    termscp
+    gping #ping with graph
+    joshuto #ranger clone
+    prettyping
+    xplr # filemanager
 
     ## === Nix Helpers ===
     cachix

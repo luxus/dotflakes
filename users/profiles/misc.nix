@@ -22,7 +22,7 @@
 
     pandoc
     tidy-viewer # Pretty-print CSV files
-##pandas is broken
+    ##pandas is broken
     #visidata # A terminal spreadsheet multitool for discovering and arranging data
     xsv # A fast CSV command line toolkit
     yq
@@ -41,7 +41,14 @@
     mpv
     youtube-dl
   ];
-
+  services.spotifyd = {
+    enable = true;
+    settings.global = {
+      username = "0v9t9iqqn7cx0nvv71pnvxk79";
+      environmentFile = config.age.secrets."passwords.env".path;
+      password = "@SPOTIFY_PASSWORD@";
+    };
+  };
   # TODO: check these out
   # services.etebase = {};
   # services.flameshot = {};
