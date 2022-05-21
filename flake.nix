@@ -240,7 +240,7 @@
             graphical =
               suites.core
               ++ [
-                desktops.fonts
+                # desktops.fonts
                 darwin.gui
                 darwin.system-defaults
               ];
