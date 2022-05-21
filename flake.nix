@@ -240,9 +240,9 @@
             desktops =
               suites.core
               ++ [
-                # desktops.fonts
-                darwin.gui
-                darwin.system-defaults
+                desktops.fonts
+                # darwin.gui
+                # darwin.system-defaults
               ];
             typical =
               suites.desktops
