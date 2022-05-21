@@ -237,7 +237,7 @@
               core.darwin
               networking.common
             ];
-            graphical =
+            desktops =
               suites.core
               ++ [
                 # desktops.fonts
