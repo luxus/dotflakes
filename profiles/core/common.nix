@@ -115,7 +115,9 @@ in
     bandwhich
     spotify-tui
     gpg-tui
-    zenith #glances?
+#broken in darwin
+    # zenith #glances?
+
     taskwarrior-tui
     bottom
     # hoard # stash for commands that are very long

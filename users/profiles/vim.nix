@@ -33,10 +33,10 @@
     treefmt # One CLI to format the code tree
 #nix
     statix
-    deadnix
+    # deadnix
     alejandra
     #: python
-     (python311.withPackages (ps: [ ps.setuptools  ]))
+     # (python311.withPackages (ps: [ ps.setuptools  ]))
      # black ps.isort
       poetry
       pyright

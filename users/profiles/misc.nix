@@ -41,14 +41,14 @@
     mpv
     youtube-dl
   ];
-  services.spotifyd = {
-    enable = true;
-    settings.global = {
-      username = "0v9t9iqqn7cx0nvv71pnvxk79";
-      # environmentFile = config.age.secrets."passwords.env".path;
-      # password = "@SPOTIFY_PASSWORD@";
-    };
-  };
+  # services.spotifyd = {
+  #   enable = true;
+  #   settings.global = {
+  #     username = "0v9t9iqqn7cx0nvv71pnvxk79";
+  #     # environmentFile = config.age.secrets."passwords.env".path;
+  #     # password = "@SPOTIFY_PASSWORD@";
+  #   };
+  # };
   # TODO: check these out
   # services.etebase = {};
   # services.flameshot = {};

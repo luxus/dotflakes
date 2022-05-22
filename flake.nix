@@ -240,7 +240,7 @@
             desktops =
               suites.core
               ++ [
-                fonts.common
+                desktops.fonts
                 core.darwin-only
               ];
             typical =
@@ -280,7 +280,6 @@
               espanso
               keyboard
               kitty
-              foot
             ];
             personal = [
               gnupg

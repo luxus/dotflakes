@@ -19,7 +19,7 @@ in {
       ++ (lib.optionals isLinux [
       ])
       ++ (lib.optionals isMacOS [
-        sf-pro
+        # sf-pro
       ]);
   };
 }
