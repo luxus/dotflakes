@@ -16,7 +16,7 @@
     nixos-stable.url = "github:NixOS/nixpkgs/release-21.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-trunk.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-21.11-darwin";
+    nixpkgs-darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Flake utilities.
     digga.url = "github:divnix/digga";
@@ -237,7 +237,7 @@
               core.darwin
               networking.common
             ];
-            desktops =
+           desktops =
               suites.core
               ++ [
                 desktops.fonts
@@ -290,7 +290,8 @@
 
         users = {
           nixos = {suites, ...}: {
-            imports = with suites; core;
+            imports = with suites;
+            basic;
           };
           luxus = {suites, ...}: {
             imports = with suites;

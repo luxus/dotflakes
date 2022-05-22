@@ -20,12 +20,12 @@
 
     ## === Data and Documents ===
 
-    pandoc
-    tidy-viewer # Pretty-print CSV files
+    # pandoc
+    # tidy-viewer # Pretty-print CSV files
     ##pandas is broken
     #visidata # A terminal spreadsheet multitool for discovering and arranging data
-    xsv # A fast CSV command line toolkit
-    yq
+    # xsv # A fast CSV command line toolkit
+    # yq
 
     # TODO: fails to build on darwin as of 2022-05-04
     # nodePackages.mermaid-cli # https://github.com/mermaid-js/mermaid-cli
@@ -39,7 +39,7 @@
     ## === Media Tools ===
 
     mpv
-    youtube-dl
+    # youtube-dl
   ];
   # services.spotifyd = {
   #   enable = true;

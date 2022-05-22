@@ -86,7 +86,8 @@ in
     cacert
     coreutils
     curl
-    dnsutils
+## compiler-rt-libc is broken in aarch64
+    # dnsutils
     broot
     fd
     findutils
@@ -128,11 +129,11 @@ in
     xplr # filemanager
 
     ## === Nix Helpers ===
-    cachix
+     cachix
     fup-repl
     manix # nix documentation search
     nix-diff # Explain why two Nix derivations differ
     nix-tree # Interactively browse dependency graphs of Nix derivations.
-    nvfetcher-bin # Generate nix sources expression for the latest version of packages
+    # nvfetcher-bin # Generate nix sources expression for the latest version of packages
   ];
 }

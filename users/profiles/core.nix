@@ -26,7 +26,6 @@
     ## === Utilities ===
     tealdeer # A very fast implementation of tldr in Rust.
     grex # Generate regexps from user-provided test cases.
-    httpie # Modern, user-friendly command-line HTTP client for the API era.
 
   ];
   programs.zellij.enable = true;

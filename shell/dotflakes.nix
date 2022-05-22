@@ -12,10 +12,10 @@
     cachix
     editorconfig-checker
     nixUnstable
-    nvfetcher-bin
+    # nvfetcher-bin
     shellcheck
     shfmt
-    terraform
+    # terraform
     treefmt
     ;
 
@@ -38,14 +38,14 @@ in {
       (dotflakes nixUnstable)
       (dotflakes agenix)
       # (dotflakes inputs.deploy.packages.${pkgs.system}.deploy-rs)
-      (dotflakes terraform)
+      # (dotflakes terraform)
       (dotflakes treefmt)
 
       {
         category = "dotflakes";
-        name = nvfetcher-bin.pname;
-        help = nvfetcher-bin.meta.description;
-        command = "cd $PRJ_ROOT/pkgs; ${nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
+        # name = nvfetcher-bin.pname;
+        # help = nvfetcher-bin.meta.description;
+        # command = "cd $PRJ_ROOT/pkgs; ${nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
       }
 
       (utils {
