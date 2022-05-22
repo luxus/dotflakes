@@ -30,8 +30,7 @@
 
   ];
   programs.zellij.enable = true;
-  programs.dunst.enabled = true;
-
+  programs.mcfly.enable = true;
   programs.bat = {
     enable = true;
     config = {

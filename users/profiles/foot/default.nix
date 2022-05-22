@@ -1,17 +1,16 @@
-{ config, pkgs, lib, nix-colors, ... }:
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  inputs,
+  ...
+}: let
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
+  inherit (inputs) base16-kitty nix-colors;
 
-with config.colorscheme.colors;
-with lib;
-let
-  cfg = config.modules.programs.foot;
 in {
-  options.modules.programs.foot = {
-    enable = mkEnableOption "Enable Foot, the lightweight terminal emulator for Wayland";
-  };
-#TODO:not working because of just a copy paste from a diffrent config
-  config = mkIf cfg.enable {
-
-  programs.foot = {
+   programs.foot = {
     enable = true;
     server.enable = true;
     settings = {
@@ -34,7 +33,7 @@ in {
 
       cursor = {
         style = "block";
-        color = "${base00} ${base05}";
+        color = "${config.colorscheme.colors.base00} ${config.colorscheme.colors.base05}";
         blink = "no";
       };
 
@@ -44,31 +43,31 @@ in {
 
       colors = {
         alpha = 1.0;
-        background = "${base00}";
-        foreground = "${base05}";
+        background = "${config.colorscheme.colors.base00}";
+        foreground = "${config.colorscheme.colors.base05}";
 
-        regular0 = "${base00}"; # black/bg
-        regular1 = "${base08}"; # red
-        regular2 = "${base0B}"; # green
-        regular3 = "${base0A}"; # yellow
-        regular4 = "${base0D}"; # blue
-        regular5 = "${base0E}"; # magenta
-        regular6 = "${base0C}"; # cyan
-        regular7 = "${base05}"; # white/fg
+        regular0 = "${config.colorscheme.colors.base00}"; # black/bg
+        regular1 = "${config.colorscheme.colors.base08}"; # red
+        regular2 = "${config.colorscheme.colors.base0B}"; # green
+        regular3 = "${config.colorscheme.colors.base0A}"; # yellow
+        regular4 = "${config.colorscheme.colors.base0D}"; # blue
+        regular5 = "${config.colorscheme.colors.base0E}"; # magenta
+        regular6 = "${config.colorscheme.colors.base0C}"; # cyan
+        regular7 = "${config.colorscheme.colors.base05}"; # white/fg
 
-        bright0 = "${base03}"; # bright black
-        bright1 = "${base09}"; # bright red
-        bright2 = "${base01}"; # bright green/lbg
-        bright3 = "${base02}"; # bright yellow
-        bright4 = "${base04}"; # bright blue
-        bright5 = "${base06}"; # bright magenta
-        bright6 = "${base0F}"; # bright cyan
-        bright7 = "${base07}"; # bright white
+        bright0 = "${config.colorscheme.colors.base03}"; # bright black
+        bright1 = "${config.colorscheme.colors.base09}"; # bright red
+        bright2 = "${config.colorscheme.colors.base01}"; # bright green/lbg
+        bright3 = "${config.colorscheme.colors.base02}"; # bright yellow
+        bright4 = "${config.colorscheme.colors.base04}"; # bright blue
+        bright5 = "${config.colorscheme.colors.base06}"; # bright magenta
+        bright6 = "${config.colorscheme.colors.base0F}"; # bright cyan
+        bright7 = "${config.colorscheme.colors.base07}"; # bright white
 
-        selection-foreground = "${base00}";
-        selection-background = "${base05}";
-        urls = "${base0D}";
-        scrollback-indicator = "${base00} ${base0D}";
+        selection-foreground = "${config.colorscheme.colors.base00}";
+        selection-background = "${config.colorscheme.colors.base05}";
+        urls = "${config.colorscheme.colors.base0D}";
+        scrollback-indicator = "${config.colorscheme.colors.base00} ${config.colorscheme.colors.base0D}";
         };
 
         csd = {
@@ -76,6 +75,5 @@ in {
         };
       };
     };
-  };
 
 }

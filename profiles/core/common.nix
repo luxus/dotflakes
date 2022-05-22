@@ -13,7 +13,6 @@ in
   nix = {
     package = pkgs.nix;
     gc.automatic = true;
-    # useSandbox = lib.mkDefault true;
     useSandbox = lib.mkDefault (!pkgs.stdenv.hostPlatform.isDarwin);
     allowedUsers = [ "*" ];
     trustedUsers = [ "root" "@wheel" ];
@@ -42,17 +41,19 @@ in
     # `$DOTFLAKES_HOSTNAME` should remain an empty string.
     DOTFLAKES_HOSTNAME = config.networking.hostName;
 
-    # TODO: should this really be a system environment variable?
-    # CACHEDIR = "$HOME/.cache";
-    EDITOR = "vim";
+    EDITOR = "lvim";
     HOSTNAME = config.networking.hostName;
     KERNEL_NAME =
-      if pkgs.stdenv.isDarwin
+      if pkgs.stdenv.hostPlatform.isDarwin
       then "darwin"
       else "linux";
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
-    # TMPDIR = "/tmp";
+    #    # Although it points to a commonly-used path for user-owned executables,
+    # $XDG_BIN_HOME is a non-standard environment variable. It is not part of
+    # the XDG Base Directory Specification.
+    # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+    TMPDIR = "/tmp";
     XDG_BIN_HOME = "$HOME/.local/bin";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -68,8 +69,6 @@ in
     bash
     fish
   ];
-
-  programs.fish.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
@@ -88,7 +87,6 @@ in
     coreutils
     curl
     dnsutils
-    exa
     broot
     fd
     findutils
@@ -110,6 +108,22 @@ in
     tmux
     wget
     whois
+## cool rust tui
+    diskonaut
+    freshfetch
+    tickrs
+    bandwhich
+    spotify-tui
+    gpg-tui
+    zenith #glances?
+    taskwarrior-tui
+    bottom
+    # hoard # stash for commands that are very long
+    termscp
+    gping #ping with graph
+    joshuto #ranger clone
+    prettyping
+    xplr # filemanager
 
     ## === Nix Helpers ===
     cachix

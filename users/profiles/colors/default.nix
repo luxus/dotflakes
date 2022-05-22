@@ -11,15 +11,13 @@
   theme =
     if envTheme != ""
     then envTheme
-    else "black-metal-khold";
+    else "dracula";
 in {
   colorscheme = inputs.nix-colors.colorSchemes.${theme};
 
   home.sessionVariables = {
     BASE16_THEME_DARK = "black-metal-khold";
     BASE16_THEME_LIGHT = "grayscale-light";
-    DOTFLAKES_EMACS_THEME_DARK = "modus-vivendi";
-    DOTFLAKES_EMACS_THEME_LIGHT = "modus-operandi";
   };
 
   home.packages = with pkgs; [

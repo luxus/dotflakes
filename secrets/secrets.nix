@@ -4,6 +4,7 @@ let
   trustedUsers = [ luxus kai ];
 in {
   "wireless.env.age".publicKeys = trustedUsers;
+  "passwords.env.age".publicKeys = trustedUsers;
 
 #  "espanso/personal.yml.age".publicKeys = trustedUsers;
 #  "espanso/work.yml.age".publicKeys = trustedUsers;
