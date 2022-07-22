@@ -5,7 +5,7 @@ moduleArgs @ {
   peers,
   ...
 }: let
-  inherit (peers.hosts) hierophant tsone;
+  inherit (peers.hosts) vanessa emily;
   identityFileName = "id_rsa_yk.pub";
   identityFile = "~/.ssh/${identityFileName}";
 in {
@@ -20,13 +20,13 @@ in {
     includes = ["~/.config/ssh/config.local"];
 
     matchBlocks = {
-      "tsone" = {
-        host = tsone.ipv4.address;
-        user = "cdom";
+      "vanessa" = {
+        host = vanessa.ipv4.address;
+        user = "luxus";
       };
 
-      "hierophant" = {
-        host = hierophant.ipv4.address;
+      "emily" = {
+        host = emily.ipv4.address;
       };
 
       "github.com" = {

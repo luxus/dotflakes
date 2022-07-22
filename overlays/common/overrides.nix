@@ -9,6 +9,7 @@ channels: final: prev: {
     nerdfonts
     python310Packages
     kitty
+    streamdeck-ui
     ;
 
   ripgrep = prev.ripgrep.override {withPCRE2 = true;};

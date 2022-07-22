@@ -16,7 +16,8 @@
     #     "spectre_v2=off"
     #   ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
 
     consoleLogLevel = 3;
 

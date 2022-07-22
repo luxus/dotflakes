@@ -4,13 +4,13 @@
   pkgs,
   ...
 }: {
-  lib.dotfield.fsPath = "${config.xdg.configHome}/dotfield";
+  lib.dotfield.fsPath = "${config.xdg.configHome}/dotflakes";
   lib.dotfield.whoami = rec {
-    firstName = "Chris";
-    lastName = "Montgomery";
+    firstName = "Kai";
+    lastName = "Loehnert";
     fullName = "${firstName} ${lastName}";
-    email = "chris@cdom.io";
-    githubUserName = "montchr";
+    email = "luxuspur@gmail.com";
+    githubUserName = "luxus";
     pgpPublicKey = "0x135EEDD0F71934F3";
   };
 
@@ -28,6 +28,9 @@
     httpie # Modern, user-friendly command-line HTTP client for the API era.
     pastel # A command-line tool to generate, analyze, convert and manipulate colors
     tealdeer # A very fast implementation of tldr in Rust.
+    helix
+    gnumake
+    gcc
 
 
     ## === Formatters ===

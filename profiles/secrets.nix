@@ -19,13 +19,13 @@
     then "secrets"
     else "admin";
 
-  mkEspansoMatchesSecret = name: {
-    "espanso/${name}.yml" = {
-      file = "${secretsDir}/espanso/${name}.yml.age";
-      group = secretsGroup;
-      path = "${cfg.secretsDir}/espanso/${name}.yml";
-    };
-  };
+  # mkEspansoMatchesSecret = name: {
+  #   "espanso/${name}.yml" = {
+  #     file = "${secretsDir}/espanso/${name}.yml.age";
+  #     group = secretsGroup;
+  #     path = "${cfg.secretsDir}/espanso/${name}.yml";
+  #   };
+  # };
 in {
   environment.variables."SOPS_AGE_KEY_FILE" = "$XDG_CONFIG_HOME/sops/age/keys";
 
@@ -35,10 +35,10 @@ in {
     sops
   ];
 
-  users.groups.secrets.members = ["root" "cdom" "seadoom" "xtallos"];
+  users.groups.secrets.members = ["root" "luxus"];
 
   age.secrets = lib.mkMerge [
-    (mkEspansoMatchesSecret "personal")
+    # (mkEspansoMatchesSecret "personal")
     # (mkEspansoMatchesSecret "work")
   ];
 

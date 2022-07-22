@@ -11,32 +11,24 @@ in {
 
   lib.dotfield = {
     srcPath = toString ../../.;
-    fsPath = "/etc/dotfield";
+    fsPath = "/persist/home/luxus/Source/dotflakes";
   };
 
   nix = {
     package = pkgs.nix;
     gc.automatic = true;
-    useSandbox = lib.mkDefault (!pkgs.stdenv.hostPlatform.isDarwin);
-    allowedUsers = ["*"];
-    trustedUsers = ["root" "@wheel" "@seadome"];
-
-    # extraOptions = ''
-    #   min-free = 536870912
-    #   keep-outputs = true
-    #   keep-derivations = true
-    #   fallback = true
-    # '';
-
-    # FUP Options {{
-    # https://github.com/gytis-ivaskevicius/flake-utils-plus/blob/166d6ebd9f0de03afc98060ac92cba9c71cfe550/lib/options.nix
+    settings = {
+      sandbox = lib.mkDefault (!pkgs.stdenv.hostPlatform.isDarwin);
+      allowed-users = ["*"];
+      trusted-users = ["root" "@wheel" "@luxus"];
+    };
     linkInputs = true;
     generateRegistryFromInputs = true;
     generateNixPathFromInputs = true;
     # }}
   };
 
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Zurich";
 
   environment.variables = {
     DOTFIELD_DIR = dotfield.fsPath;
@@ -69,6 +61,7 @@ in {
   # Enable completions for system packages.
   environment.pathsToLink = ["/share/zsh"];
 
+  home.sessionPath = ["${XDG_BIN_HOME}/emacs/bin" "$PATH"];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -106,6 +99,7 @@ in {
     gnused
     gnutar
     grc
+    helix
     jq
     less
     moreutils

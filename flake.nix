@@ -13,6 +13,7 @@
     digga.inputs.darwin.follows = "darwin";
     digga.inputs.home-manager.follows = "home-manager";
     digga.inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    flake-utils.url = "github:numtide/flake-utils";
     nixlib.url = "github:nix-community/nixpkgs.lib";
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -32,7 +33,7 @@
     # User environments.
     home-manager.url = "github:montchr/home-manager/trunk";
     # home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixos-unstable";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs-trunk";
 
     # Deployments.
     deploy.url = "github:serokell/deploy-rs";
@@ -60,6 +61,9 @@
     crafted-emacs.url = "github:SystemCrafters/crafted-emacs";
     crafted-emacs.flake = false;
 
+    # Neovim Nightly
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     # Other sources.
     nix-colors.url = "github:Misterio77/nix-colors";
     base16-kitty = {
@@ -71,7 +75,8 @@
       flake = false;
     };
 
-    nixpkgs.follows = "nixos-stable";
+    # nixpkgs.follows = "nixos-unstable";
+    nixpkgs.follows = "nixpkgs-trunk";
   };
 
   outputs = {
@@ -80,8 +85,10 @@
     darwin,
     deploy,
     digga,
+    flake-utils,
     gitignore,
     home-manager,
+    neovim-nightly-overlay,
     nixlib,
     nix-colors,
     nixos-generators,
@@ -94,6 +101,9 @@
     sops-nix,
     ...
   } @ inputs': let
+    inherit (digga.lib) flattenTree rakeLeaves;
+    inherit (flake-utils.lib) eachSystem system;
+    darwinSystems = [system.x86_64-darwin system.aarch64-darwin];
     inputs =
       inputs'
       // {
@@ -106,7 +116,7 @@
       };
     peers = import ./ops/metadata/peers.nix;
   in
-    digga.lib.mkFlake {
+    (digga.lib.mkFlake {
       inherit self inputs;
 
       supportedSystems = [
@@ -114,10 +124,10 @@
         "x86_64-darwin"
 
         # FIXME: many python packages will not build on this system due to
-        # broken pyopenssl dependency
+        # broken pyopenssl dependency, i will try to remove all broken packages
         # https://github.com/NixOS/nixpkgs/issues/175875
         # https://github.com/pyca/pyopenssl/issues/873
-        # "aarch64-darwin"
+        "aarch64-darwin"
       ];
 
       channelsConfig.allowUnfree = true;
@@ -129,7 +139,7 @@
             (digga.lib.importOverlays ./overlays/nixos-stable)
           ];
           overlays = [
-            inputs.emacs-overlay.overlay
+           inputs.neovim-nightly-overlay.overlay
           ];
         };
         nixpkgs-darwin-stable = {
@@ -138,8 +148,9 @@
             (digga.lib.importOverlays ./overlays/nixpkgs-darwin-stable)
           ];
           overlays = [
-            ./pkgs/darwin
             inputs.emacs-overlay.overlay
+            (final: prev: {yabai = self.packages.${final.system}.yabai;})
+            inputs.neovim-nightly-overlay.overlay
           ];
         };
         nixos-unstable = {
@@ -147,7 +158,15 @@
             (digga.lib.importOverlays ./overlays/nixos-unstable)
           ];
         };
-        nixpkgs-trunk = {};
+        nixpkgs-trunk = {
+          imports = [
+            (digga.lib.importOverlays ./overlays/common)
+            (digga.lib.importOverlays ./overlays/nixos-unstable)
+          ];
+          overlays = [
+           inputs.neovim-nightly-overlay.overlay
+          ];
+        };
       };
 
       lib = import ./lib {lib = digga.lib // nixos-unstable.lib;};
@@ -173,7 +192,7 @@
       nixos = {
         hostDefaults = {
           system = "x86_64-linux";
-          channelName = "nixos-stable";
+          channelName = "nixpkgs-trunk";
           imports = [(digga.lib.importExportableModules ./modules)];
           modules = [
             {lib.our = self.lib;}
@@ -188,10 +207,12 @@
 
         imports = [(digga.lib.importHosts ./hosts/nixos)];
         hosts = {
-          boschic = {};
-          hodgepodge = {};
-          hierophant = {};
-          tsone = {};
+          vanessa = {};
+#FIXME: disable the old hosts
+          # boschic = {};
+          # hodgepodge = {};
+          # hierophant = {};
+          # tsone = {};
           bootstrap-graphical = {};
         };
 
@@ -234,12 +255,15 @@
               tangible
               ++ [
                 fonts.common
-                fonts.pragmatapro
-                gnome-desktop
+#FIXME: no access to the font
+                # fonts.pragmatapro
+                #gnome-desktop
+                kde-desktop
                 secrets
                 video
                 workstations.common
-                yubikey
+#FIXME:don't have a yubikey
+                # yubikey
               ];
           };
         };
@@ -262,7 +286,9 @@
 
         imports = [(digga.lib.importHosts ./darwin/machines)];
         hosts = {
-          cdotmpln = {};
+#FIXME: disable hosts
+          # cdotmpln = {};
+          emily = {};
         };
 
         importables = rec {
@@ -281,8 +307,9 @@
             ];
             workstation = [
               fonts.common
-              fonts.pragmatapro
-              os-specific.darwin.emacs
+#FIXME: disable font and emacs
+              # fonts.pragmatapro
+              # os-specific.darwin.emacs
               os-specific.darwin.gui
               os-specific.darwin.system-defaults
               secrets
@@ -324,7 +351,7 @@
               direnv
               # emacs.crafted
               # emacs.doom
-              emacs.xtallos
+              # emacs.xtallos
               git
               gpg
               shells.zsh
@@ -333,7 +360,8 @@
             #: graphical:  familiar personal computing interfaces
             graphical = [
               desktop.common
-              desktop.gnome
+             # desktop.gnome
+              #desktop.kde
               firefox
               foot
               keyboard
@@ -348,9 +376,9 @@
               graphical
               ++ developer
               ++ [
-                espanso
-                mail
-                newsboat
+                # espanso
+                # mail
+                # newsboat
                 obs-studio
                 secrets.password-store
                 sync
@@ -381,6 +409,10 @@
                 php
               ]);
           };
+          luxus = {suites, ...}: {
+            imports = with suites;
+              basic ++ developer;
+          };
         };
       };
 
@@ -406,5 +438,8 @@
           magicRollback = true;
         };
       };
-    };
+    }) // (eachSystem darwinSystems (system: {
+      packages = builtins.mapAttrs (n: v: nixpkgs.legacyPackages.${system}.callPackage v {})
+        (flattenTree (rakeLeaves ./darwin/packages));
+    }));
 }

@@ -21,8 +21,7 @@
   # https://gitlab.gnome.org/GNOME/sushi
   services.gnome.sushi.enable = true;
 
-  xdg.portal.enable = true;
-  xdg.portal.gtkUsePortal = true;
+  # xdg.portal.enable = true;
 
   programs.gnupg.agent.pinentryFlavor = "gnome3";
 

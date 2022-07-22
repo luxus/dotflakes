@@ -31,6 +31,8 @@
     firefox-wayland
     signal-desktop
     wl-clipboard
+    brave
+    gitkraken
 
     # Grab images from a Wayland compositor
     # https://sr.ht/~emersion/grim/
